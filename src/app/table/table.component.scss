@@ -1,3 +1,9 @@
+$brown: rgb(73,68,48);
+
 .full-width-table {
   width: 100%;
+}
+
+.mat-header-cell{
+  background-color: $brown;
 }

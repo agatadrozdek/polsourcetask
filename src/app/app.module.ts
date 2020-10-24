@@ -8,7 +8,8 @@ import { TableComponent } from './table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatTableDataSource } from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+// import {MatTableDataSource } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {MatTableDataSource } from '@angular/material/table';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableDataSource
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

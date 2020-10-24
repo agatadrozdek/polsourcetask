@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { TableDataSource, TableItem } from './table-datasource';
 
 
@@ -14,11 +14,11 @@ import { TableDataSource, TableItem } from './table-datasource';
 export class TableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTableDataSource) table: MatTableDataSource<TableItem>;
+  @ViewChild(MatTable) table: MatTable<TableItem>;
   dataSource: TableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['taskName', 'priority', 'done'];
 
   ngOnInit() {
     this.dataSource = new TableDataSource();
@@ -27,6 +27,13 @@ export class TableComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    // this.table.dataSource = this.dataSource;
+    this.table.dataSource = this.dataSource;
   }
+}
+
+export class CheckboxConfigurableExample {
+  checked = false;
+  indeterminate = false;
+  labelPosition: 'before' | 'after' = 'after';
+  disabled = false;
 }
