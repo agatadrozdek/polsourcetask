@@ -12,8 +12,10 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$polsourcetask-primary: mat-palette($mat-indigo);
-$polsourcetask-accent: mat-palette($mat-pink, A200, A100, A400);
+//$polsourcetask-primary: mat-palette($mat-indigo);
+$polsourcetask-primary: mat-palette($mat-orange);
+//$polsourcetask-accent: mat-palette($mat-orange, A200, A100, A400);
+$polsourcetask-accent: mat-palette($mat-orange, A400, A200, A100);
 
 // The warn palette is optional (defaults to red).
 $polsourcetask-warn: mat-palette($mat-red);

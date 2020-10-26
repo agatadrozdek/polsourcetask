@@ -1,4 +1,5 @@
 $brown: rgb(73,68,48);
+// $orange: rgb(246,157,47);
 
 .full-width-table {
   width: 100%;
@@ -6,4 +7,17 @@ $brown: rgb(73,68,48);
 
 .mat-header-cell{
   background-color: $brown;
+}
+
+// .checkbox{
+//   background-color: $orange;
+// }
+//aria checked^ true/false
+
+.mat-header-cell{
+  color: whitesmoke;
+}
+
+.mat-sort-header-arrow{
+  color: white;
 }

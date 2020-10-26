@@ -2,7 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { TableDataSource, TableItem } from './table-datasource';
+import { TodoItem } from '../interfaces/todo-item';
+import { TodoService } from '../services/todo.service';
+import { TableDataSource } from './table-datasource';
 
 
 
@@ -14,20 +16,25 @@ import { TableDataSource, TableItem } from './table-datasource';
 export class TableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<TableItem>;
+  @ViewChild(MatTable) table: MatTable<TodoItem>;
   dataSource: TableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['taskName', 'priority', 'done'];
+  constructor(private todoService: TodoService){}
 
   ngOnInit() {
-    this.dataSource = new TableDataSource();
+    this.dataSource = new TableDataSource(this.todoService);
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  getTotalLength(){
+    return this.todoService.getTotalLength();
   }
 }
 
