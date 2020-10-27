@@ -9,8 +9,7 @@ const storageName = "TodoList";
   providedIn: 'root'
 })
 export class TodoService {
-  // TODO: replace this with real data from your application
-  private EXAMPLE_DATA: TodoItem[] = [
+  private TABLE_DATA: TodoItem[] = [
     {id: 1, taskName: 'Study', priority: 2, done : false },
     {id: 2, taskName: 'Cook dinner', priority: 1, done : false },
     {id: 3, taskName: 'Play games', priority: 0, done : true },
@@ -31,13 +30,13 @@ export class TodoService {
   private dataObservable: BehaviorSubject<TodoItem[]>;
 
   constructor() { 
-    this.EXAMPLE_DATA = JSON.parse(localStorage.getItem(storageName)) || [];
-    this.dataObservable = new BehaviorSubject(this.EXAMPLE_DATA);
+    this.TABLE_DATA = JSON.parse(localStorage.getItem(storageName)) || [];
+    this.dataObservable = new BehaviorSubject(this.TABLE_DATA);
     
   }
   private updateStorage(){
-    localStorage.setItem(storageName, JSON.stringify(this.EXAMPLE_DATA));
-    this.dataObservable.next(this.EXAMPLE_DATA);
+    localStorage.setItem(storageName, JSON.stringify(this.TABLE_DATA));
+    this.dataObservable.next(this.TABLE_DATA);
   }
   private getSortedData(data: TodoItem[], sortAttribute, direction) {
     if (!sortAttribute || direction === '') {
@@ -74,7 +73,7 @@ export class TodoService {
     return of(
       this.getPagedData(
         this.getSortedData(
-          [...this.EXAMPLE_DATA],
+          [...this.TABLE_DATA],
           options.sortAttribute,
           options.sortDirection
         ),
@@ -84,33 +83,33 @@ export class TodoService {
   }
 
   addTodo(element: TodoItem){
-    const newId = this.EXAMPLE_DATA.reduce((acc, item) => acc < item.id ? item.id : acc, 0);
-    this.EXAMPLE_DATA.push({
+    const newId = this.TABLE_DATA.reduce((acc, item) => acc < item.id ? item.id : acc, 0);
+    this.TABLE_DATA.push({
       ...element,
       id: newId + 1
     });
-    console.log(this.EXAMPLE_DATA);
+    console.log(this.TABLE_DATA);
     this.updateStorage();
   }
 
   deleteTodo(id: number){
-    const elementIdx = this.EXAMPLE_DATA.findIndex(element => element.id === id);
+    const elementIdx = this.TABLE_DATA.findIndex(element => element.id === id);
     if(elementIdx >= 0){
-      this.EXAMPLE_DATA.splice(elementIdx, 1);
+      this.TABLE_DATA.splice(elementIdx, 1);
       this.updateStorage();
     }
   }
   updateTodo(element){
-    const elementIdx = this.EXAMPLE_DATA.findIndex(elem => elem.id === element.id);
+    const elementIdx = this.TABLE_DATA.findIndex(elem => elem.id === element.id);
     if(elementIdx >= 0){
-      this.EXAMPLE_DATA[elementIdx] = {
-        ...this.EXAMPLE_DATA[elementIdx],
+      this.TABLE_DATA[elementIdx] = {
+        ...this.TABLE_DATA[elementIdx],
         ...element
       }
       this.updateStorage();
     }
   }
   getTotalLength(){
-    return this.EXAMPLE_DATA.length;
+    return this.TABLE_DATA.length;
   }
 }

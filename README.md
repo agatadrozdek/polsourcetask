@@ -3,8 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
 
 ## Clone the repo 
-`git clone https://github.com/bryanforbes/intern-angular`
-`cd intern-angular`
+`git clone https://github.com/agatadrozdek/polsourcetask.git`
+
+`cd polsourcetask`
 
 ## Install npm packages
 `npm install`
