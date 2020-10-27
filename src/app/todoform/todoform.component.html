@@ -1,18 +1,26 @@
-<div class="example-container">
-  <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
+<div class="example-container" >
+  <form [formGroup]="todoForm" (submit)="onSubmit(todoForm.value)">
+    <mat-form-field appearance="fill" >
+      <mat-label>Task name</mat-label>
+      <input matInput [required]="true" formControlName="taskName">
+      <mat-error *ngIf="todoForm.get('taskName').hasError('required')">Please enter a task name</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" >
+      <mat-label>Select</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option value="0">Low</mat-option>
+        <mat-option value="1">Medium</mat-option>
+        <mat-option value="2">High</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <br>
+    
+    <button type="submit" mat-stroked-button color="primary">Submit</button>
+  </form>
+  
 </div>
 
-<div class="example-button-row">
-  <h3>Mini Fab Buttons</h3>
-  <button mat-button>Basic</button>
-  <button mat-mini-fab color="primary">Primary</button>
-  <button mat-mini-fab color="accent">Accent</button>
-  <button mat-mini-fab color="warn">Warn</button>
-  <button mat-mini-fab disabled>Disabled</button>
-  <button mat-mini-fab aria-label="Example icon-button with a heart icon">
-  </button>
-  <a mat-mini-fab routerLink=".">Link</a>
-</div>
+<br>
+

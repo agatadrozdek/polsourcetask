@@ -35,7 +35,8 @@ export class TableDataSource extends DataSource<TodoItem> {
     // stream for the data-table to consume.
     const dataMutations = [
       //this.data,//observableOf(this.data),
-      observableOf(null),
+      //observableOf(null),
+      this.todoService.getFullTodoList(),
       this.paginator.page,
       this.sort.sortChange
     ];

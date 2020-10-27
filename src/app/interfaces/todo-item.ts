@@ -1,6 +1,7 @@
 export interface TodoItem {
-    taskName: string;
-    priority: string;
-    done: boolean;
-  }
+  id: number;
+  taskName: string;
+  priority: number;
+  done: boolean;
+}
   

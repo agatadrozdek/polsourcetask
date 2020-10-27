@@ -13,6 +13,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCustomPaginatorIntl } from '../classes/mat-custom-paginator-intl';
 
+import {MatIconModule} from '@angular/material/icon';
+
 // import {NgModule} from '@angular/core';
 // import {A11yModule} from '@angular/cdk/a11y';
 // import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -144,7 +146,8 @@ import { MatCustomPaginatorIntl } from '../classes/mat-custom-paginator-intl';
     MatOptionModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     {

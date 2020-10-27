@@ -1,7 +1,8 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { TodoItem } from '../interfaces/todo-item';
 import { TodoService } from '../services/todo.service';
 import { TableDataSource } from './table-datasource';
@@ -20,7 +21,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   dataSource: TableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['taskName', 'priority', 'done'];
+  displayedColumns = ['taskName', 'priority', 'done', 'delete'];
   constructor(private todoService: TodoService){}
 
   ngOnInit() {
@@ -32,9 +33,29 @@ export class TableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-
+  getPriority(priority){
+    switch(priority){
+      case 0:
+        return "Low";
+      case 1:
+        return "Medium"
+      case 2:
+        return "High"
+    }
+  }
   getTotalLength(){
     return this.todoService.getTotalLength();
+  }
+
+  deleteClick(element){
+    this.todoService.deleteTodo(element.id);
+  }
+
+  changeDone(event, row){
+    this.todoService.updateTodo({
+      id: row.id,
+      done: event.checked
+    })
   }
 }
 
@@ -44,3 +65,5 @@ export class CheckboxConfigurableExample {
   labelPosition: 'before' | 'after' = 'after';
   disabled = false;
 }
+
+

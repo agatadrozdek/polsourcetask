@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
 import { TodoformComponent } from './todoform/todoform.component';
-import { MaterialModule } from "./material/material.module"
-
+import { MaterialModule } from "./material/material.module";
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,9 @@ import { MaterialModule } from "./material/material.module"
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
